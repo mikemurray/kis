@@ -2,7 +2,7 @@
   "name": "kis",
   "description": "Keep it simple, a very basic static site generator using Jade, CoffeeScript and Stylus",
   "author": "Mike Murray",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "licenses": [
     {
       "type": "MIT",
@@ -14,7 +14,7 @@
   },
   "main": "./lib/kis.js",
   "bin": { 
-    "sew": "./bin/kis"
+    "kis": "./bin/kis"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,6 @@
     "stylus": "0.22.0",
     "stitch": "0.3.2",
     "strata": "0.9.1",
-    "uglify-js": "1.2.2",
     "jade": "0.20.0"
   }
 }
