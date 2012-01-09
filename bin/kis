@@ -3,4 +3,4 @@
 var path = require('path');
 var lib = path.join(path.dirname(__filename), '../lib/kis');
 
-var wkr = require(lib);
+var kis = require(lib);
