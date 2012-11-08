@@ -4,7 +4,7 @@ cs = require 'coffee-script'
 util = require 'util'
 fs = require 'fs'
 fpath = require 'path'
-strata = require 'strata'
+connect = require 'connect'
 opti = require 'optimist'
 stylus = require 'stylus'
 exec = require('child_process').exec
@@ -53,10 +53,10 @@ class Kis
 
   _serve: ->
     @_watch()
-    app = new strata.Builder
-    app.use strata.commonLogger
-    app.use strata.file, argv.d, ['index.html', 'index.htm']
-    strata.run app, { port: argv.p }
+    app = connect()
+      .use(connect.logger('dev'))
+      .use(connect.static(fpath.resolve(argv.d)))
+      .listen(argv.p)
 
   _help: ->
     opti.showHelp()
