@@ -2,7 +2,7 @@
   "name": "kis",
   "description": "Keep it simple, a very basic static site generator using Jade, CoffeeScript and Stylus",
   "author": "Mike Murray",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "licenses": [
     {
       "type": "MIT",
