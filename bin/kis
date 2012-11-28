@@ -1,6 +1,47 @@
 #!/usr/bin/env node
 
-var path = require('path');
-var lib = path.join(path.dirname(__filename), '../lib/kis');
+var 
+  path = require('path'),
+  opti    = require('optimist');
 
+
+// Command usage
+var usage = 
+    'Examples:\n'
+  + '  kis new\n'
+  + '  kis build\n'
+  + '  kis build -d path/to/project\n'
+  + '  kis serve -p 8080\n\n'
+  + 'Commands:\n'
+  + '  new     Create new base project\n'
+  + '  build   Build your project\n'
+  + '  watch   Wacth and rebuild your project\n'
+  + '  serve   Start a simple HTTP server on port 3000, watch and build your project';
+
+
+var argv = opti
+  .usage(usage)["default"]({
+  p: 3000,
+  d: '.'})
+  .describe('p', 'Port to start simple webserver on')
+  .describe('d', 'Directory to run commands against')
+  .describe('force', 'Force an action, regardless of warnings')
+  .argv;
+
+// Path to kis lib
+var lib = path.join(path.dirname(__filename), '../lib/kis');
 var kis = require(lib);
+
+//console.log(argv)
+
+
+var action = kis['_' + argv._[0]];
+
+//console.log('ACTION::', action, kis)
+
+if (action) {
+  action.call(kis, argv);
+} else {
+  opti.showHelp();
+}
+      
