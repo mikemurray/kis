@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var 
-  path = require('path'),
+  path    = require('path'),
   opti    = require('optimist');
 
 
@@ -32,12 +32,7 @@ var argv = opti
 var lib = path.join(path.dirname(__filename), '../lib/kis');
 var kis = require(lib);
 
-//console.log(argv)
-
-
 var action = kis['_' + argv._[0]];
-
-//console.log('ACTION::', action, kis)
 
 if (action) {
   action.call(kis, argv);
